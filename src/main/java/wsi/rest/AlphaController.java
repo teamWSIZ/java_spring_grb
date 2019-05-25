@@ -25,12 +25,14 @@ public class AlphaController {
 
     @GetMapping(value = "/status")
     public GenericResponse status() {
+        log.info("Zapytanie o status aplikacji");
         return new GenericResponse("Uploader app version: " + version);
     }
 
 
     @GetMapping(value = "/users")
     public Iterable<Person> getUsers() {
+        log.debug("Zapytanie o wszystkich userów");
         return userService.getPersons();
     }
 

@@ -35,6 +35,7 @@ public class UserService {
 
     //konstruktor
     public UserService() {
+        log.info("Tworzę serwis userów");
         generatePersons();
     }
 
