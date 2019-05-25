@@ -30,7 +30,7 @@ public class AlphaController {
 
 
     @GetMapping(value = "/users")
-    public List<Person> getUsers() {
+    public Iterable<Person> getUsers() {
         return userService.getPersons();
     }
 

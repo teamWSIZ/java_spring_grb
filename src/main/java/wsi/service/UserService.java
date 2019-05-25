@@ -31,12 +31,26 @@ import static org.springframework.util.StringUtils.cleanPath;
 public class UserService {
     Faker f = new Faker(new Locale("pl")); //pl, en-UK, ru, ...
 
-    public List<Person> getPersons() {
-        List<Person> res = new ArrayList<>();
-        for (int i = 0; i < 30; i++) {
-            res.add(new Person(f.name().firstName(), f.name().lastName(), f.address().city()));
-        }
-        return res;
+    Map<Integer,Person> personStorage;
+
+    //konstruktor
+    public UserService() {
+        generatePersons();
     }
+
+    private void generatePersons() {
+        personStorage = new HashMap<>();
+        for (int i = 0; i < 30; i++) {
+            int id = i;
+            Person p = new Person(i, f.name().firstName(), f.name().lastName(), f.address().city());
+            personStorage.put(id, p);
+        }
+    }
+
+    public Iterable<Person> getPersons() {
+        return personStorage.values();
+    }
+
+
 
 }
