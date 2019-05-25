@@ -36,6 +36,12 @@ public class AlphaController {
         return userService.getPersons();
     }
 
+    @PostMapping(value = "/users")
+    public Person addUser(@RequestBody Person p) {
+        return userService.addUser(p);
+    }
+
+
 
 
 }
