@@ -17,7 +17,7 @@ import static java.net.URLDecoder.decode;
 @CrossOrigin
 @Slf4j
 public class AlphaController {
-    @Value("${app.version}")
+    @Value("${app.version:nieustawiona}")
     String version;
 
     @Autowired UserService userService;
@@ -26,7 +26,7 @@ public class AlphaController {
     @GetMapping(value = "/status")
     public GenericResponse status() {
         log.info("Zapytanie o status aplikacji");
-        return new GenericResponse("Uploader app version: " + version);
+        return new GenericResponse("App version: " + version);
     }
 
 
