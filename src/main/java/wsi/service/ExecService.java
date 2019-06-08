@@ -1,4 +1,7 @@
-package wsi.wykop;
+package wsi.service;
+
+import org.springframework.stereotype.Service;
+import wsi.model.ExecResponse;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,37 +9,26 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CommandRun {
-    public static void main(String[] args) {
+@Service
+public class ExecService {
+
+    public ExecResponse executeCommand(String command) {
+        //tu wykonać komendę
+        //potem listy stringów wyników podać do zwracanej ExecResponse
         List<String> output = new ArrayList<>();
         List<String> errput = new ArrayList<>();
-        String command = "df -hT";
-
-        //na windows można spróbować:
-        // 'tasklist' ew. 'tasklist | grep notepad'
-        // potem mając pid
-        // taskkill -pid 20096
 
         try {
             String s = "";
             Process p = Runtime.getRuntime().exec(command);
-//            p.destroy();  //zabija proces
-//            System.out.println(p.pid()); //wypisuje id procesu (systemowe)
-//            System.out.println(p.isAlive());    //true jeśli proces ciągle działa
-
-
             BufferedReader stdInput = new BufferedReader(new
                     InputStreamReader(p.getInputStream()));
 
             BufferedReader stdError = new BufferedReader(new
                     InputStreamReader(p.getErrorStream()));
-
-            // read the output from the command
             while ((s = stdInput.readLine()) != null) {
                 output.add(s);
             }
-
-            // read any errors from the attempted command
             while ((s = stdError.readLine()) != null) {
                 errput.add(s);
             }
@@ -44,14 +36,7 @@ public class CommandRun {
             errput.add(e.toString());
         }
 
-        System.out.println("-------- out: ");
-        output.forEach(line->{
-            System.out.println(line);
-        });
-        System.out.println("-------- err: ");
-        errput.forEach(line->{
-            System.out.println(line);
-        });
-
+        return new ExecResponse(command, "", output, errput);
     }
+
 }

