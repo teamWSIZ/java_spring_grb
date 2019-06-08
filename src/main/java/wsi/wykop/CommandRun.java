@@ -10,7 +10,12 @@ public class CommandRun {
     public static void main(String[] args) {
         List<String> output = new ArrayList<>();
         List<String> errput = new ArrayList<>();
-        String command = "df -hT";
+        String command = "dff -hT";
+
+        //na windows można spróbować:
+        // 'tasklist' ew. 'tasklist | grep notepad'
+        // potem mając pid
+        // taskkill -pid 20096
 
         try {
             String s = "";
@@ -35,7 +40,12 @@ public class CommandRun {
             errput.add(e.toString());
         }
 
+        System.out.println("-------- out: ");
         output.forEach(line->{
+            System.out.println(line);
+        });
+        System.out.println("-------- err: ");
+        errput.forEach(line->{
             System.out.println(line);
         });
 

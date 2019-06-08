@@ -12,6 +12,9 @@ public class ExceptionHandling {
         if (filename.equals("a.txt")) {
             throw new RuntimeException("Plik nie istnieje");
         }
+        if (filename.equals("hack.txt")) {
+            throw new IllegalArgumentException("hack!!!!");
+        }
         System.out.println("end readfile");
 
         return res;
@@ -20,7 +23,7 @@ public class ExceptionHandling {
 
     String function2() {
         System.out.println("start function2");
-        String res = readFile("a.txt");
+        String res = readFile("hack.txt");
         System.out.println("end function2");
         return res;
     }
@@ -40,7 +43,9 @@ public class ExceptionHandling {
 
         try {
             System.out.println(g.function1());
-        } catch (Exception e) {
+        } catch (IllegalArgumentException e) {
+            System.out.println("dziwny argument " + e);
+        } catch (RuntimeException e) {
             System.out.println("wystąpił błąd: " + e);
         }
 
