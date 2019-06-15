@@ -7,13 +7,15 @@ import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
 import { MenuComponent } from './menu/menu.component';
 import {HttpClientModule} from "@angular/common/http";
+import { ExecComponent } from './exec/exec.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ContactComponent,
-    MenuComponent
+    MenuComponent,
+    ExecComponent
   ],
   imports: [
     BrowserModule,
