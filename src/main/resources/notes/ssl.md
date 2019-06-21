@@ -66,15 +66,20 @@ przy czym plik `zzz.p12` będzie musiał być dostępny w folderze, w którym ur
 Serwis będzie dostępny pod https://zzz.pl:8443 (gdybyśmy użyli portu 443, to wystarczyłoby https://zzz.pl)
 
 #### Troubleshooting
-Przy poprawnej konfiguracji aplikacja startuje bez błędu, i w logach widać linię:
+* Przy poprawnej konfiguracji aplikacja startuje bez błędu, i w logach widać linię:
 ```
 2019-06-19 18:48:19.997  INFO 22782 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8443 (https) with context path ''
 ```
 
-W przypadku błędów zazwyczaj ostatnia linia stacktrace'a zawiera informację o typie błędu, np:
+* W przypadku błędów zazwyczaj ostatnia linia stacktrace'a zawiera informację o typie błędu, np:
 
 ```
 Caused by: java.io.FileNotFoundException: /home/pm/IdeaProjects/java_spring_grb/maix.p12 (No such file or directory)
 ```
  informuje nas o niedostępności file'a z keystorem. 
 
+* W przypadku błędu:
+```
+Caused by: java.io.IOException: jsse.alias_no_key_entry
+```
+mamy do czynienia z brakiem klucza o wybranym alias-ie (`ssl.keyAlias`) w keystore-rze
