@@ -11,8 +11,9 @@
 
     <div class="card">
       <div class="card-header">Komendy</div>
-      <div class="card-body">
-        <button class="btn btn-success" (click)="executeCommand()"> Run command </button>
+      <div class="card-body form-group">
+        <input type="text" class="form-control" [(ngModel)]="command">
+        <button class="btn btn-success mt-3" (click)="executeCommand()"> Run command </button>
 
       </div>
     </div>
@@ -20,7 +21,9 @@
   <div class="col-md-8">
       <div class="card">
         <div class="card-header">Wynik</div>
-        <div class="card-body">{{output}}</div>
+        <div class="card-body">
+          <pre *ngFor="let g of output">{{g}}</pre>
+        </div>
       </div>
   </div>
 
