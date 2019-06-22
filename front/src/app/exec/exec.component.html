@@ -1,6 +1,15 @@
 <div class="row">
   <div class="col-md-4">
     <div class="card">
+      <div class="card-header">Klucz</div>
+      <div class="card-body form-group">
+
+        <input type="password" class="form-control" [(ngModel)]="adminpass">
+
+      </div>
+    </div>
+
+    <div class="card">
       <div class="card-header">Komendy</div>
       <div class="card-body">
         <button class="btn btn-success" (click)="executeCommand()"> Run command </button>

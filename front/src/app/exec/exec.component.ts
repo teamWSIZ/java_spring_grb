@@ -10,6 +10,7 @@ import {ExecResponse} from "../model/exec-response";
 export class ExecComponent implements OnInit {
   host = 'http://localhost:8088/exec';
   output: string[];
+  adminpass: string = 'secret!';
 
 
   constructor(private http: HttpClient) { }
@@ -18,7 +19,7 @@ export class ExecComponent implements OnInit {
   }
 
   executeCommand() {
-    let url = this.host + '?pass=secret!&cmd=df';
+    let url = this.host + `?pass=${this.adminpass}&cmd=df`;
     this.http.get<ExecResponse>(url).subscribe(res=>{
       this.output = res.ouput;
     })
