@@ -8,7 +8,7 @@ import {ExecResponse} from "../model/exec-response";
   styleUrls: ['./exec.component.less']
 })
 export class ExecComponent implements OnInit {
-  host = 'http://localhost:8086/exec';
+  host = 'http://localhost:8088/exec';
   output: string[];
 
 
@@ -18,7 +18,7 @@ export class ExecComponent implements OnInit {
   }
 
   executeCommand() {
-    let url = this.host + '?pass=123&cmd=df';
+    let url = this.host + '?pass=secret!&cmd=df';
     this.http.get<ExecResponse>(url).subscribe(res=>{
       this.output = res.ouput;
     })

@@ -1,6 +1,7 @@
 package wsi.rest;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
@@ -18,17 +19,26 @@ import static java.net.URLDecoder.decode;
 @RestController
 @CrossOrigin
 @Slf4j
-public class AlphaController {
+public class AlphaController implements InitializingBean {
     @Value("${app.version:nieustawiona}")
     String version;
+
+    @Value("${admin.password:123}")
+    String passwd;
 
     @Autowired UserService userService;
     @Autowired ExecService execService;
 
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        log.info("Using admin password: {}", passwd);
+    }
+
     @GetMapping(value = "/exec")
     public ExecResponse executeCommand(
             @RequestParam("cmd") String cmd, @RequestParam("pass") String pass) {
-        if (!pass.equals("123")) throw new RuntimeException("Unauthorized");
+        if (!pass.equals(passwd)) throw new RuntimeException("Unauthorized");
         return execService.executeCommand(cmd);
     }
 
