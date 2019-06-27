@@ -29,6 +29,19 @@ public class AlphaController implements InitializingBean {
     @Autowired UserService userService;
     @Autowired ExecService execService;
 
+    @GetMapping(value = "/status")
+    public GenericResponse status() {
+        log.info("Zapytanie o status aplikacji");
+        return new GenericResponse("App version: " + version);
+    }
+
+    @GetMapping(value = "/health")
+    public String health() {
+        log.info("Health heck");
+        return "0";
+    }
+
+
 
     @Override
     public void afterPropertiesSet() throws Exception {
@@ -43,11 +56,6 @@ public class AlphaController implements InitializingBean {
     }
 
 
-    @GetMapping(value = "/status")
-    public GenericResponse status() {
-        log.info("Zapytanie o status aplikacji");
-        return new GenericResponse("App version: " + version);
-    }
 
 
     @GetMapping(value = "/users")
