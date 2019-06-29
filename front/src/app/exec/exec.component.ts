@@ -20,8 +20,8 @@ export class ExecComponent implements OnInit {
 
   ngOnInit() {
     this.origin = window.location.origin;
-    this.host = this.origin + '/exec';
-    // this.host = 'http://localhost:8088/exec';
+    // this.host = this.origin + '/exec';
+    this.host = 'http://localhost:8088/exec';
     console.log(`using origin: ${this.host}`);
   }
 
