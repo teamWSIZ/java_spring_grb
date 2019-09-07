@@ -5,6 +5,7 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
+import wsi.model.CarResponse;
 import wsi.model.ExecResponse;
 import wsi.model.GenericResponse;
 import wsi.model.Person;
@@ -63,11 +64,11 @@ public class AlphaController implements InitializingBean {
     }
 
     @GetMapping(value = "/cars")
-    public GenericResponse cars(
+    public CarResponse cars(
             @RequestParam("wheels") Integer wheels,
             @RequestParam("shields") Integer shields) {
         int wynik = Math.min(wheels/4, shields/2);
-        return new GenericResponse("Samochodów:" + wynik);
+        return new CarResponse(wynik, "OK");
     }
 
 

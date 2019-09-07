@@ -9,6 +9,7 @@ import { MenuComponent } from './menu/menu.component';
 import {HttpClientModule} from "@angular/common/http";
 import { ExecComponent } from './exec/exec.component';
 import {FormsModule} from "@angular/forms";
+import { CarsComponent } from './cars/cars.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {FormsModule} from "@angular/forms";
     HomeComponent,
     ContactComponent,
     MenuComponent,
-    ExecComponent
+    ExecComponent,
+    CarsComponent
   ],
   imports: [
     BrowserModule,
