@@ -49,9 +49,34 @@ public class AlphaController implements InitializingBean {
         return new GenericResponse("App version: " + version);
     }
 
+    @GetMapping(value = "/hello")
+    public GenericResponse hello() {
+        return new GenericResponse("Hello World");
+    }
+
+    @GetMapping(value = "/add")
+    public GenericResponse add(
+            @RequestParam("a") Integer a,
+            @RequestParam("b") Integer b) {
+        int wynik = a + b;
+        return new GenericResponse(a + " + " + b + " = " + wynik);
+    }
+
+    @GetMapping(value = "/cars")
+    public GenericResponse cars(
+            @RequestParam("wheels") Integer wheels,
+            @RequestParam("shields") Integer shields) {
+        int wynik = Math.min(wheels/4, shields/2);
+        return new GenericResponse("Samochodów:" + wynik);
+    }
+
+
+
+
 
     @GetMapping(value = "/users")
     public Iterable<Person> getUsers() {
+
         log.debug("Zapytanie o wszystkich userów");
         return userService.getPersons();
     }

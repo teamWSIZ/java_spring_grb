@@ -14,8 +14,8 @@
 jest wykonywalna, można ją przenieść na dowolny PC i uruchomić przez
 `java -jar java_spring_grb_1.0.0-SNAPSHOT.jar`
 1.1 uwaga: jeśli budujemy z javą 11, to dobrze sprawdzić, 
-czy uruchamiamy również z javaą 11 (lub 12, ...)
-1.1 uruchomiona aplikacja zawiera i frontend i backend:
+czy uruchamiamy również z javą 11 (lub 12, ...)
+1.1 uruchomiona aplikacja zawiera frontend i backend:
 1.1.1 Całość jest dostępna na http://localhost:8086
 1.1 możemy dostosować zachowanie aplikacji, przez
 stworzenie pliku `application.properties`
