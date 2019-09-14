@@ -73,6 +73,7 @@ public class AlphaController implements InitializingBean {
 
     @GetMapping(value = "/car-types")
     public Collection<CarType> carTypes() {
+        //todo: zrobić combo na front-cie które wyświetli dostępne typy
         return carTypeService.getAllTypes();
     }
 
