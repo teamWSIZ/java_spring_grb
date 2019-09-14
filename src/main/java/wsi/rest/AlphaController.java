@@ -5,13 +5,12 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
-import wsi.model.CarResponse;
-import wsi.model.ExecResponse;
-import wsi.model.GenericResponse;
-import wsi.model.Person;
+import wsi.model.*;
+import wsi.service.CarTypeService;
 import wsi.service.ExecService;
 import wsi.service.UserService;
 
+import java.util.Collection;
 import java.util.List;
 
 import static java.net.URLDecoder.decode;
@@ -29,6 +28,7 @@ public class AlphaController implements InitializingBean {
 
     @Autowired UserService userService;
     @Autowired ExecService execService;
+    @Autowired CarTypeService carTypeService;
 
 
     @Override
@@ -71,7 +71,10 @@ public class AlphaController implements InitializingBean {
         return new CarResponse(wynik, "OK");
     }
 
-
+    @GetMapping(value = "/car-types")
+    public Collection<CarType> carTypes() {
+        return carTypeService.getAllTypes();
+    }
 
 
 
