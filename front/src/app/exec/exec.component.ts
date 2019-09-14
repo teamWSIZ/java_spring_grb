@@ -28,10 +28,10 @@ export class ExecComponent implements OnInit {
 
   executeCommand() {
     let url = this.host + `?pass=${this.adminpass}&cmd=${this.command}`;
-    this.http.get<ExecResponse>(url).subscribe(res=>{
+    this.http.get<ExecResponse>(url).subscribe(res => {
       this.output = res.ouput;
       this.errors = res.error;
-    })
+    });
   }
 
 }

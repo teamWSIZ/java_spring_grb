@@ -4,12 +4,17 @@
 
     <div class="card">
       <div class="card-header">Car constructor</div>
-      <div class="card-body form-group">
-        <input type="text" class="form-control" [(ngModel)]="wheels" name="wheels">
-        <input type="text" class="form-control" [(ngModel)]="shields" name="shields">
-        <button class="btn btn-success mt-3" (click)="compute()"> Compute </button>
-
-      </div>
+      <form>
+        <div class="card-body form-group">
+          <label for="w"> Wheels</label>
+          <input type="text" class="form-control" [(ngModel)]="wheels" name="wheels" id="w">
+        </div>
+        <div class="card-body form-group">
+          <label for="s"> Shields</label>
+          <input type="text" class="form-control" [(ngModel)]="shields" name="shields" id="s">
+        </div>
+      </form>
+      <button class="btn btn-success mt-3" (click)="compute()"> Compute </button>
     </div>
   </div>
   <div class="col-md-4"></div>
