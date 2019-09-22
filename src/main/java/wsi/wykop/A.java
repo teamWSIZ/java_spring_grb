@@ -1,4 +1,6 @@
-package wsi.model;
+package wsi.wykop;
+
+import wsi.model.CarType;
 
 import java.util.HashSet;
 import java.util.Set;
