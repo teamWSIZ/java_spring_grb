@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-//@ComponentScan({"wd"})
+//@ComponentScan({"wsi.config"})
 @SpringBootApplication
 public class Boot2Application {
 
